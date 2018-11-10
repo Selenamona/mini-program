@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "date-pick": "../../components/date-pick/date-pick",
+        "wxc-mask": "../../components/mask/mask",
+        "wxc-loading": "../../components/wxc-loading/dist/index",
+        "upload-img": "../../components/impressImg/impressImg",
+        "search-bar": "../../components/search/search"
+    }
+}

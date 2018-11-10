@@ -1,0 +1,33 @@
+<!--pages/select/select.wxml-->
+<view class="section">
+    <view class="section__title">日期选择器</view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2018-09-01" bindchange="bindDateChange">
+        <view class="picker">
+        当前选择: {{date}}
+        </view>
+    </picker>
+    <view class="section__title">自定义日期选择器</view>
+    <view class="picker" bindtap='dateSelect'>
+        当前选择: {{date}}
+    </view>
+    <view class="date_select" hidden="{{hidePick}}">
+        <view class="btn">  
+            <button class="cancel_btn" bindtap='cancel'>取消</button>
+            <button class="ok_btn" bindtap='ok'>确认</button>
+        </view>
+        <picker-view indicator-style="height: 60rpx;" class="pick_style" value="{{value}}" bindchange="bindChange">
+            <picker-view-column>
+                <view wx:for="{{years}}" wx:key="index" class="select_column">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{months}}" wx:key="index" class="select_column">{{item}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{days}}" wx:key="index" class="select_column">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+    <view class="pick_mask" hidden="{{hideMask}}"></view>
+    
+</view>
+

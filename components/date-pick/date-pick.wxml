@@ -1,0 +1,28 @@
+<!--components/date-pick.wxml-->
+<!-- 自定义封装 -->
+<!-- <view class="date_select" hidden="{{hidePick}}">
+    <view class="btn">  
+        <button class="cancel_btn" bindtap='cancel'>取消</button>
+        <button class="ok_btn" bindtap='ok' disabled="{{disBtn}}">确认</button>
+    </view>
+    <picker-view indicator-style="height: 60rpx;" class="pick_style" value="{{value}}" bindchange="bindChange">
+        <picker-view-column>
+            <view wx:for="{{years}}" wx:key="index" class="select_column">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{months}}" wx:key="index" class="select_column">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{days}}" wx:key="index" class="select_column">{{item}}</view>
+        </picker-view-column>
+    </picker-view>
+</view>
+<view class="pick_mask" hidden="{{hideMask}}"></view> -->
+<!-- 小程序自带组件 -->
+<view class="section"> 
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      <slot></slot>
+    </view>
+  </picker>
+</view>

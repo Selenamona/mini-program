@@ -1,0 +1,13 @@
+<!--pages/request/request.wxml-->
+<view>
+    <text>网络请求测试</text>
+    <button bindtap="getData">点击获取测试数据</button>
+    <view wx:for="{{data}}" wx:key="index">
+        {{item.queryName}}
+    </view>
+    <wxc-mask status="{{isShow?'show':'hide'}}" opacity="0.3"></wxc-mask>
+    <wxc-loading is-show="{{isShow}}" image="../../imgs/loading_gif.gif" slip=" " _pid="{{_pid}}"></wxc-loading>
+</view>
+
+
+

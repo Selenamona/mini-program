@@ -1,0 +1,35 @@
+/* pages/share/share.wxss */
+.inModal {
+    background: #fff;
+    position: fixed;
+    width: 600rpx;
+    height: 300rpx;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 40rpx;
+    border-radius: 5px;
+    z-index: 999;   
+}
+
+.mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(216, 211, 211, 0.7);
+    z-index: 888;
+}
+
+.numInput {
+    height:60rpx;
+    border:1px solid #ccc;
+    border-radius:5px;
+    margin:40rpx 0 60rpx;
+    padding: 0 20rpx;
+}
+
+.sharbtn {
+    float: right;
+}

@@ -1,0 +1,20 @@
+<!--pages/test/test.wxml-->
+<view>
+    <!-- 自定义封装日期选择 -->
+    <!-- <button bindtap="selectDate">选择日期</button> -->
+    <!-- <date-pick hideMask='{{hideMask}}' hidePick='{{hidePick}}' bindsetDate="setDate" ifLong="长期"></date-pick> -->
+    <!-- 小程序自带组件封装 -->
+    <search-bar></search-bar>
+    <date-pick bindsetDate="setDate" ifLong="长期">
+        <button bindtap="selectDate">选择日期</button>
+    </date-pick>
+    <!-- 日期展示 -->
+    <text>{{date}}</text>
+    <button bindtap="geth5faceid">人脸识别</button>
+    <button bindtap="showMask">显示遮罩</button> 
+    <button bindtap="showAction">​显示操作菜单</button> 
+    <button bindtap="uploadImg">上传图片</button> 
+    <upload-img id="upload-img"></upload-img>
+    <wxc-mask status="{{isShow?'show':'hide'}}" opacity="0.3"></wxc-mask>
+    <wxc-loading is-show="{{isShow}}" image="../../imgs/loading_gif.gif" slip=" " _pid="{{_pid}}"></wxc-loading>
+</view>

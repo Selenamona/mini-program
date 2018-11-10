@@ -1,0 +1,6 @@
+<!--pages/storage/storage.wxml-->
+<text>{{inputValue}}</text>
+<input bindinput="bindKeyInput" placeholder="请输入..." class="input"/>
+<button bindtap="nextStep">下一步</button>
+<button bindtap="setStorage" data-type="1">设置缓存</button>
+<button bindtap="setStorage" data-type="0">清除缓存</button>

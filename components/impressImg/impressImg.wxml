@@ -1,0 +1,2 @@
+<!--components/impressImg/impressImg.wxml-->
+<image wx:if="{{src}}" src="{{src}}" style="width:100%;height:{{imgHeight}}px" data-url='{{src}}' bindtap='previewImg'></image> 

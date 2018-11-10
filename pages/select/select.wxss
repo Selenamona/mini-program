@@ -1,0 +1,54 @@
+/* pages/select/select.wxss */ 
+.picker {
+    height: 88rpx;
+    line-height: 88rpx;
+    background: rgb(247, 247, 247);
+}
+
+.date_select {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 999;
+    background: #fff;
+}
+
+.select_column {
+    line-height: 60rpx;
+}
+.btn {
+    border-bottom: 1px solid #e7e7eb;
+    text-align: left;
+}
+.cancel_btn, .ok_btn{ 
+    display: inline-block;
+    border:none;
+    background: #fff;
+    line-height: 1;
+    padding: 20rpx;
+    border-radius: 0px;
+}
+
+button::after{
+    border: none;
+}
+
+.ok_btn {
+    color: rgb(76, 149, 233, 0.9);    
+    float: right;
+} 
+
+.pick_style {
+    width: 100%; height: 480rpx;
+}
+
+.pick_mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(216, 211, 211, 0.7);
+    z-index: 888;
+}

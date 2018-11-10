@@ -1,0 +1,98 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.0",
+	"appid": "wx6089a9c50a67fe8a",
+	"projectname": "app",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": 0,
+					"name": "转发",
+					"pathName": "pages/share/share",
+					"query": "name=xue",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "Kboo7-jz4Hel-AZ3SRy0DUlNRU-H177rCXppHE4pIjY@cr4dev",
+						"shareKey": "M5Tp5sHmvxtO_dExdivvyVu6PMP7BDJ8ppe0z14IjmtbuKWoMtgNA-ktRhPRoqdlcRM5C4qHpzRMcg3Tf423sg~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "日期选择",
+					"pathName": "pages/select/select",
+					"query": " ",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "Kboo7-jz4Hel-AZ3SRy0DUlNRU-H177rCXppHE4pIjY@cr4dev",
+						"shareKey": "M5Tp5sHmvxtO_dExdivvyVu6PMP7BDJ8ppe0z14IjmtbuKWoMtgNA-ktRhPRoqdlcRM5C4qHpzRMcg3Tf423sg~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "测试",
+					"pathName": "pages/test/test",
+					"query": " ",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "Kboo7-jz4Hel-AZ3SRy0DUlNRU-H177rCXppHE4pIjY@cr4dev",
+						"shareKey": "M5Tp5sHmvxtO_dExdivvyVu6PMP7BDJ8ppe0z14IjmtbuKWoMtgNA-ktRhPRoqdlcRM5C4qHpzRMcg3Tf423sg~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "数据存储",
+					"pathName": "pages/storage/storage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "网络请求",
+					"pathName": "pages/request/request",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "图片压缩",
+					"pathName": "pages/image/image"
+				}
+			]
+		}
+	}
+}
