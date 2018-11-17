@@ -66,7 +66,8 @@ Page({
       app_id:"TIDAfpaQ",
       access_token:"WAA0f-dGGlQHTVClazkxtmW6FX_nRhpUB01QpWs5MbZluhVQmrW9E0FpiJX9FIqr26uu814x74CCqqSg0lmuG26YsQ", 
       type:"SIGN",
-      version:"1.0.0"
+      version:"1.0.0",
+      user_id:"madongxue"
     },"GET").then(res=>{
       console.log(res,"SIGN ticket 获取")
       // res.tickets

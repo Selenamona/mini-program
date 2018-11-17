@@ -20,6 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.ctx =  wx.createCameraContext();
     wx.getSystemInfo({
       success:(info)=>{
@@ -44,48 +45,55 @@ Page({
         this.setData({
           imgWHF:e.width+"px-"+e.height+"px"  
         })  
+        if(size>500){
+          console.log('图片大于500KB')
+          this.compressImg(path,e.width,e.height)
+        }else{ 
+          this.downLoadImg(path);
+        }
       }
     }) 
     // 图片大于 500 KB 压缩
-    if(size>500){ 
-      console.log("图片大于500KB")
+    // if(size>500){ 
+    //   console.log("图片大于500KB")
       // 小程序 API 压缩
-      wx.compressImage({
-        src: path, // 图片路径
-        quality: 50, // 压缩质量
-        success:(e)=>{
-          // 获取API压缩图片大小
-          wx.getFileInfo({
-            filePath: e.tempFilePath,
-            success: (res)=> {
-              console.log((res.size/1024).toFixed(2),'小程序压缩后大小') 
-              // if(res.size/1024>500){
-              //   // 获取API压缩图片宽高
-              //   wx.getImageInfo({
-              //     src: e.tempFilePath,
-              //     success: (e) => { 
-              //       // canvas 压缩  
-              //       // this.compressImg(res.size/1024,e.width,e.height,path)
-              //     }
-              //   }) 
-              // }else {
-                this.downLoadImg(e.tempFilePath);
-              // }
-            }
-          })  
-        }
-      })
-    }else{ 
-      this.downLoadImg(path);
-    }
+      // wx.compressImage({
+      //   src: path, // 图片路径
+      //   quality: 50, // 压缩质量
+      //   success:(e)=>{
+      //     // 获取API压缩图片大小
+      //     wx.getFileInfo({
+      //       filePath: e.tempFilePath,
+      //       success: (res)=> {
+      //         console.log((res.size/1024).toFixed(2),'小程序压缩后大小') 
+      //         // if(res.size/1024>500){
+      //         //   // 获取API压缩图片宽高
+      //         //   wx.getImageInfo({
+      //         //     src: e.tempFilePath,
+      //         //     success: (e) => { 
+      //         //       // canvas 压缩  
+      //         //       // this.compressImg(res.size/1024,e.width,e.height,path)
+      //         //     }
+      //         //   }) 
+      //         // }else {
+      //           this.downLoadImg(e.tempFilePath);
+      //         // }
+      //       }
+      //     })  
+      //   }
+      // })
+    // }else{ 
+    //   this.downLoadImg(path);
+    // }
   },
   // 图片小于500KB，获取图片信息，下载图片
   downLoadImg(path){
-      console.log("图片小于500KB")
+    console.log(path,"下载路径")
       // 获取压缩后图片宽高
       wx.getImageInfo({
         src: path,
         success: (resp) => {     
+          console.log(resp,"获取图片信息2")
             this.setData({
               imgWHB:resp.width+ "px-"+ resp.height + "px"
             })
@@ -132,33 +140,24 @@ Page({
               imgSizeF:Math.round(res.size/1024)+"KB_"+(res.size/1024/1024).toFixed(2)+"M"
             })  
             // 判断是否压缩
-            _this.ifCompress(res.size,imgPath); 
+            _this.ifCompress(Math.round(res.size/1024),imgPath); 
           }
         })   
       }
     })
   },
   // canvas 压缩图片
-  compressImg(imgSize,imgW,imgH,imgPath){  
-    console.log(imgSize,imgW,imgH,"canvas 压缩") 
-    const ctx = wx.createCanvasContext("canvas"); 
-    //瓦片canvas
-    let width = imgW;
-    let height = imgH;
-
-    //如果图片大于四百万像素，计算压缩比并将大小压至400万以下
-    // let ratio;
-    // if ((ratio = width * height / 4000000) > 1) {
-    //   console.log("大于400万像素")
-    //   ratio = Math.sqrt(ratio);
-    //   width /= ratio;
-    //   height /= ratio;
-    // } 
+  compressImg(imgPath,imgW,imgH){  
+    console.log(imgW,imgH,"canvas 压缩") 
+    const ctx = wx.createCanvasContext("canvas");  
+    let w = 350;
+    let h = w*imgH/imgW; 
     this.setData({
-      canvasWidth: width,
-      canvasHeight: height
+      canvasWidth: w,
+      canvasHeight: h
     }) 
-    ctx.drawImage(imgPath, 0, 0, width, height);
+    console.log(w,h,999)
+    ctx.drawImage(imgPath, 0, 0, w, h);
     ctx.draw(false,()=>{
       setTimeout(()=>{
         this.canvasToImg();  
@@ -174,34 +173,9 @@ Page({
       // destWidth:w*2,
       // destHeight:h*2,
       success:(res)=>{  
-        // 获取图片大小
-        wx.getFileInfo({
-          filePath: res.tempFilePath,
-          success (e) {
-            console.log((e.size/1024).toFixed(2),'压缩后大小') 
-            _this.setData({
-              imgSizeB:Math.round(e.size/1024),
-              src2:res.tempFilePath
-            })
-          }
-        }) 
-        // 获取图片宽高
-        wx.getImageInfo({
-          src: res.tempFilePath,
-          success (res) {
-            console.log(res.width,res.height,'压缩后宽高')
-            _this.setData({
-              imgWHB:res.width+"px-"+res.height+"px"
-            })
-          }
-        })
-        // 下载图片到本地
-        wx.saveImageToPhotosAlbum({
-          filePath: res.tempFilePath,
-          success: (res) => {
-            console.log('下载成功') 
-          }
-        }) 
+        console.log(res,'canvasToImg success')
+        // console.log()
+        this.downLoadImg(res.tempFilePath)
       },
       fail:(e)=>{
         console.log(e,'canvasToTempFilePath fail')
