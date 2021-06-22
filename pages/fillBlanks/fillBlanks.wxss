@@ -1,1 +1,51 @@
-/* pages/fillBlanks/fillBlanks.wxss */
+.fill-blanks {
+  padding: 40rpx;
+}
+
+
+.fill-blanks .fill-text {
+  line-height: 1.8;
+}
+
+.fill-blanks .handle-btn {
+  margin: 40rpx 100rpx;
+}
+
+.fill-blanks .handle-btn .active {
+  background-color: rgb(35, 133, 224);
+  color: #fff;
+}
+
+.fill-blanks .mark {
+  text-decoration: underline;
+}
+
+.fill-blanks .item {
+  border: 2rpx solid #000;
+  padding: 0 4rpx;
+  margin: 0 4rpx;
+}
+
+.fill-blanks .opacity {
+  color: rgba(0, 0, 0, 0);
+}
+
+.fill-blanks .activeBlank {
+  border: 2rpx solid rgb(84, 230, 55);
+}
+
+.fill-blanks .error {
+  border: 2rpx solid rgb(243, 33, 14);
+}
+
+.reset {
+  margin: 20rpx 100rpx;
+  background-color: rgb(240, 47, 47);
+  color: #fff;
+}
+
+.switch {
+  margin: 20rpx 100rpx;
+  background-color: rgb(26, 189, 88);
+  color: #fff;
+}

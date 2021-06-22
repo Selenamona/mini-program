@@ -1,2 +1,30 @@
-<!--pages/fillBlanks/fillBlanks.wxml-->
-<text>pages/fillBlanks/fillBlanks.wxml</text>
+<view class="fill-blanks">
+
+  <view hidden="{{!isFirst}}">
+    <view class="fill-text">
+      本人声明：<text class="mark">{{textList[0]}}</text>或合作经销商的工作人员已向我<text class="mark">{{textList[1]}}</text>且我已阅读、
+      <text class="mark">{{textList[2]}}</text>融资租赁合同以及借款合同条款、法律关系及<text class="mark">{{textList[3]}}</text>，知晓并愿意承担每一项费用、支付及金额。
+      <text class="mark">{{textList[4]}}</text>签署的融资租赁合同非借款合同。
+    </view>
+    <view class="handle-btn">
+      <button class="{{index===0?'active':''}}" wx:for="{{btnList}}" wx:key="index" data-index="{{index}}" bindtap="selectEvent">{{item}}</button>
+    </view>
+  </view>
+
+  <view hidden="{{isFirst}}">
+    <view class="fill-text">
+      本人声明：
+      <text class="item {{fillList[0].value?'':'opacity'}} {{fillList[0].active?'activeBlank':''}} {{fillList[0].fail?'error':''}}" data-id="0" bindtap="selectBlank">{{fillList[0].value||fillList[0].original}}</text>或合作经销商的工作人员已向我
+      <text class="item {{fillList[1].value?'':'opacity'}} {{fillList[1].active?'activeBlank':''}} {{fillList[1].fail?'error':''}}" data-id="1" bindtap="selectBlank">{{fillList[1].value||fillList[1].original}}</text>且我已阅读、
+      <text class="item {{fillList[2].value?'':'opacity'}} {{fillList[2].active?'activeBlank':''}} {{fillList[2].fail?'error':''}}" data-id="2" bindtap="selectBlank">{{fillList[2].value||fillList[2].original}}</text>融资租赁合同以及借款合同条款、法律关系及
+      <text class="item {{fillList[3].value?'':'opacity'}} {{fillList[3].active?'activeBlank':''}} {{fillList[3].fail?'error':''}}" data-id="3" bindtap="selectBlank">{{fillList[3].value||fillList[3].original}}</text>，知晓并愿意承担每一项费用、支付及金额。
+      <text class="item {{fillList[4].value?'':'opacity'}} {{fillList[4].active?'activeBlank':''}} {{fillList[4].fail?'error':''}}" data-id="4" bindtap="selectBlank">{{fillList[4].value||fillList[4].original}}</text>签署的融资租赁合同非借款合同。
+    </view>
+    <view class="handle-btn">
+      <button wx:for="{{btnShowList}}" wx:key="index" data-index="{{index}}" bindtap="selectItem">{{item.name}}</button>
+    </view>
+  </view>
+
+  <button class="reset" bindtap="resetData">重置</button>
+  <button class="switch" bindtap="switchMethod">切换</button>
+</view>
