@@ -21,7 +21,7 @@
       <text class="item {{fillList[4].value?'':'opacity'}} {{fillList[4].active?'activeBlank':''}} {{fillList[4].fail?'error':''}}" data-id="4" bindtap="selectBlank">{{fillList[4].value||fillList[4].original}}</text>签署的融资租赁合同非借款合同。
     </view>
     <view class="handle-btn">
-      <button wx:for="{{btnShowList}}" wx:key="index" data-index="{{index}}" bindtap="selectItem">{{item.name}}</button>
+      <button wx:for="{{btnShowList}}" wx:key="index" data-index="{{index}}" bindtap="selectItem" hidden="{{!item.show}}">{{item.name}}</button>
     </view>
   </view>
 
