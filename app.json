@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/fillBlanks/fillBlanks",
     "pages/index/index",
     "pages/logs/logs",
     "pages/request/request",
@@ -9,38 +10,44 @@
     "pages/test/test",
     "pages/storage/storage",
     "components/mask/mask",
-    "pages/pick/pick" 
+    "pages/pick/pick"
   ],
   "tabBar": {
     "list": [{
-      "pagePath": "pages/index/index",
-      "text": "主页",
-      "iconPath":"./imgs/home.png",
-      "selectedIconPath":"./imgs/home2.png"
-    }, {
-      "pagePath": "pages/select/select",
-      "text": "订单管理",
-      "iconPath":"./imgs/order.png",
-      "selectedIconPath":"./imgs/order2.png"
-    }, {
-      "pagePath": "pages/request/request",
-      "iconPath":"./imgs/add.png"
-    }, {
-      "pagePath": "pages/image/image",
-      "text": "店面",
-      "iconPath":"./imgs/store.png",
-      "selectedIconPath":"./imgs/store2.png"
-    }, {
-      "pagePath": "pages/test/test",
-      "text": "我的",
-      "iconPath":"./imgs/mine.png",
-      "selectedIconPath":"./imgs/mine2.png"
-    }]
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "./imgs/home.png",
+        "selectedIconPath": "./imgs/home2.png"
+      },
+      {
+        "pagePath": "pages/select/select",
+        "text": "订单管理",
+        "iconPath": "./imgs/order.png",
+        "selectedIconPath": "./imgs/order2.png"
+      },
+      {
+        "pagePath": "pages/request/request",
+        "iconPath": "./imgs/add.png"
+      },
+      {
+        "pagePath": "pages/image/image",
+        "text": "店面",
+        "iconPath": "./imgs/store.png",
+        "selectedIconPath": "./imgs/store2.png"
+      },
+      {
+        "pagePath": "pages/test/test",
+        "text": "我的",
+        "iconPath": "./imgs/mine.png",
+        "selectedIconPath": "./imgs/mine2.png"
+      }
+    ]
   },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
