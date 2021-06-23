@@ -1,5 +1,5 @@
+<!-- 选词填空 -->
 <view class="fill-blanks">
-
   <view hidden="{{!isFirst}}">
     <view class="fill-text">
       本人声明：<text class="mark">{{textList[0]}}</text>或合作经销商的工作人员已向我<text class="mark">{{textList[1]}}</text>且我已阅读、

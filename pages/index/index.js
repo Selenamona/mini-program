@@ -1,4 +1,3 @@
-//index.js
 //获取应用实例
 const app = getApp()
 
@@ -12,7 +11,7 @@ Page({
   //事件处理函数
   bindViewTap: function(e) {
     let type = e.target.dataset.type;
-    let url = ""; 
+    let url = "";
     url = '../' + type + '/' + type;
     wx.navigateTo({
       url: url

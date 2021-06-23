@@ -1,38 +1,11 @@
+// pages/longPressRecord/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    inputValue: ""
-  },
 
-  setStorage(e){
-    if(e.target.dataset.type=='1'){
-      wx.setStorage({
-        key:"key",
-        data:"value"
-      })
-    } else {
-      wx.removeStorage({
-        key: 'key',
-        success (res) {
-          console.log(res,'清除成功')
-        }
-      })
-    }
-  },
-
-  bindKeyInput: function(e) {  // 输入
-    this.setData({
-      inputValue: e.detail.value
-    })
-  },
-
-  nextStep(){  // 下一步
-    wx.navigateTo({
-      url: "../test/test"
-    })
   },
 
   /**

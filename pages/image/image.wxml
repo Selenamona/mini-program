@@ -1,21 +1,20 @@
-<!--pages/image/image.wxml-->
+<!-- 图片拍照/压缩/canvas -->
 <view>
-    <!-- <camera class="" mode="normal" device-position="back" flash="auto" scan-area="[,,,]" 
+  <!-- <camera class="" mode="normal" device-position="back" flash="auto" scan-area="[,,,]"
         bindstop="" bindscancode="" binderror=""
         style="width: 100%; height: 300px;">
     </camera> -->
-    <!-- <button bindtap="takePhoto">拍照</button> -->
-    <button bindtap="choosePhoto">从相册选择图片</button>
-    <view>压缩前大小：{{imgSizeF}} </view> 
-    <view>压缩前宽高：{{imgWHF}} </view> 
-    <view>压缩后大小：{{imgSizeB}}KB </view> 
-    <view>压缩后宽高：{{imgWHB}} </view> 
-    <!-- <button bindtap="uploadFile">上传</button> -->
-    <image wx:if="{{src}}" src="{{src}}" style="width:100%;" data-url='{{src}}' bindtap='previewImg'></image>
-    <image wx:if="{{src2}}" src="{{src2}}" style="width:100%;" data-url='{{src2}}' ></image>
+  <!-- <button bindtap="takePhoto">拍照</button> -->
+  <button bindtap="choosePhoto">从相册选择图片</button>
+  <view>压缩前大小：{{imgSizeF}} </view>
+  <view>压缩前宽高：{{imgWHF}} </view>
+  <view>压缩后大小：{{imgSizeB}}KB </view>
+  <view>压缩后宽高：{{imgWHB}} </view>
+  <!-- <button bindtap="uploadFile">上传</button> -->
+  <image wx:if="{{src}}" src="{{src}}" style="width:100%;" data-url='{{src}}' bindtap='previewImg'></image>
+  <image wx:if="{{src2}}" src="{{src2}}" style="width:100%;" data-url='{{src2}}'></image>
 </view>
 <view style="position:relative;left:{{devWidth}}px;">
-<!-- <view> -->
-    <canvas canvas-id="canvas" style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;" class="canvas"></canvas>
+  <!-- <view> -->
+  <canvas canvas-id="canvas" style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;" class="canvas"></canvas>
 </view>
- 

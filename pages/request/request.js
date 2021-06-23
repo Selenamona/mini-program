@@ -1,4 +1,3 @@
-// pages/request/request.js
 const Http = require('../../utils/request');
 Page({
 
@@ -9,7 +8,7 @@ Page({
     data:[],
     isShow:false,
   },
- 
+
 
   getData(){
     Http.request("/base/deal/queryConditions?debug=true&debug_account=muweitao",JSON.stringify({
@@ -21,6 +20,6 @@ Page({
       })
     }).catch(err => {
       console.log(err);
-    })  
+    })
   }
 })

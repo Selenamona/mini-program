@@ -1,12 +1,12 @@
-<!--pages/share/share.wxml-->
-<button open-type="share" type="primary">分享</button> 
+<!-- 带参数分享 -->
+<button open-type="share" type="primary">分享</button>
 <view wx:for="{{query}}" wx:key="index">工号：{{item}}</view>
-<button type="primary" bindtap="shareTest">输入工号分享</button> 
+<button type="primary" bindtap="shareTest">输入工号分享</button>
 
 <view class="inModal" hidden="{{hasModal}}">
-    <text>输入工号：</text>
-    <input type="text" focus class="numInput" bindinput="bindinput" value="{{jobNum}}"/>
-    <button size="mini" bindtap="cancel">取消</button>
-    <button open-type="share" size="mini" class="sharbtn" type="primary">分享</button>
+  <text>输入工号：</text>
+  <input type="text" focus class="numInput" bindinput="bindinput" value="{{jobNum}}" />
+  <button size="mini" bindtap="cancel">取消</button>
+  <button open-type="share" size="mini" class="sharbtn" type="primary">分享</button>
 </view>
 <view class="mask" hidden="{{hideMask}}"></view>

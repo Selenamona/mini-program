@@ -1,4 +1,3 @@
-// pages/select/select.js
 const date = new Date()
 const years = []
 const months = []
@@ -36,7 +35,7 @@ Page({
     years: years,
     months: months,
     days: days,
-    value: values, 
+    value: values,
     hideMask:true,
     hidePick:true,
     canClick:false,
@@ -99,23 +98,23 @@ Page({
 
   },
 
-  bindDateChange: function(e) { // pick 
+  bindDateChange: function(e) { // pick
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
     })
-  }, 
+  },
   dateSelect(){
     this.setData({
       hideMask: false,
       hidePick: false,
     })
-  }, 
+  },
   bindChange(e) { // 自定义日期选择 pick-view
-    let val = e.detail.value  
-    console.log(val) 
+    let val = e.detail.value
+    console.log(val)
     this.data.canClick = true;
-    let year = this.data.years[val[0]]; 
+    let year = this.data.years[val[0]];
     if(year == '长期'){  // 选择长期
       this.setData({
         months:monthsLong,
@@ -129,14 +128,14 @@ Page({
         },()=>{
           this.data.canClick = false;
         })
-      }) 
+      })
     }else{ // 选择年份
       let _this = this;
       function setDateLs(){ // 根据月份 修改日天数
-        let month = _this.data.months[val[1]];  
+        let month = _this.data.months[val[1]];
         if(_this.data.preMonths==val[1]){
-          let day = _this.data.days[val[2]]; 
-          _this.data.dateLs = year + '-' + month + '-' + day; 
+          let day = _this.data.days[val[2]];
+          _this.data.dateLs = year + '-' + month + '-' + day;
           _this.data.canClick = false;
         }else{
           _this.data.preMonths = val[1]; // 选中月份index
@@ -144,39 +143,39 @@ Page({
           let dayInMonth = [];
           for (let i = 1 ; i <= dayNum; i++) {
             dayInMonth.push(i)
-          } 
-          _this.setData({ 
+          }
+          _this.setData({
             days: dayInMonth
           },()=>{
             let day = _this.data.days[val[2]];
-            _this.data.dateLs = year + '-' + month + '-' + day; 
-            _this.data.canClick = false; 
+            _this.data.dateLs = year + '-' + month + '-' + day;
+            _this.data.canClick = false;
           })
         }
-        
+
 
 
         // ---------------------------------
-        // let month = _this.data.months[val[1]];  
+        // let month = _this.data.months[val[1]];
         // let dayNum = _this.getDaysInMonth(year,month);
         // if(dayNum == _this.data.days.length){
-        //   let day = _this.data.days[val[2]]; 
-        //   _this.data.dateLs = year + '-' + month + '-' + day; 
+        //   let day = _this.data.days[val[2]];
+        //   _this.data.dateLs = year + '-' + month + '-' + day;
         //   _this.data.canClick = false;
         // }else{
         //   let dayInMonth = [];
         //   for (let i = 1 ; i <= dayNum; i++) {
         //     dayInMonth.push(i)
-        //   } 
-        //   _this.setData({ 
+        //   }
+        //   _this.setData({
         //     days: dayInMonth
         //   },()=>{
         //     let day = _this.data.days[val[2]];
-        //     _this.data.dateLs = year + '-' + month + '-' + day; 
-        //     _this.data.canClick = false; 
+        //     _this.data.dateLs = year + '-' + month + '-' + day;
+        //     _this.data.canClick = false;
         //   })
         // }
-      } 
+      }
       if(this.data.months.length==1){ // 长期-年份
         this.setData({
           months:months,
@@ -184,9 +183,9 @@ Page({
         },setDateLs)
       }else{ // 年份-年份
         setDateLs();
-      } 
-    } 
-  }, 
+      }
+    }
+  },
   cancel(){
     this.setData({
       hideMask: true,
@@ -198,14 +197,14 @@ Page({
     if(!this.data.canClick){
       if(this.data.dateLs){ // 防止 未选择日期-确认-清空日期展示
         this.setData({
-          date: this.data.dateLs 
-        })  
-      } 
+          date: this.data.dateLs
+        })
+      }
       this.cancel();
-    } 
+    }
   },
   getDaysInMonth(year,month){ // 根据年月获得当月天数
-    month = parseInt(month,10);   
+    month = parseInt(month,10);
     var temp = new Date(year,month,0);
     return temp.getDate();
   }

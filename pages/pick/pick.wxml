@@ -1,4 +1,4 @@
-<!--pages/pick/pick.wxml-->
+<!-- 底弹选择器 -->
 <view class="section">
   <view class="section__title">普通选择器</view>
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">

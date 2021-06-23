@@ -1,4 +1,3 @@
-// pages/image/image.js
 Page({
 
   /**
@@ -8,7 +7,7 @@ Page({
     src:"",
     src2:"",
     canvasWidth:'',
-    canvasHeight:'', 
+    canvasHeight:'',
     imgSizeF:"0KB",
     imgSizeB:0,
     devWidth:"",
@@ -29,32 +28,32 @@ Page({
         })
       }
     })
-  }, 
+  },
   // 预览图片
   previewImg(e){
     wx.previewImage({
-      urls: [e.target.dataset.url]  
+      urls: [e.target.dataset.url]
     })
   },
   ifCompress(size,path){
     // 获取原图片宽高
     wx.getImageInfo({
       src: path,
-      success: (e) => {    
+      success: (e) => {
         // 设置压缩前宽高
         this.setData({
-          imgWHF:e.width+"px-"+e.height+"px"  
-        })  
+          imgWHF:e.width+"px-"+e.height+"px"
+        })
         if(size>500){
           console.log('图片大于500KB')
           this.compressImg(path,e.width,e.height)
-        }else{ 
+        }else{
           this.downLoadImg(path);
         }
       }
-    }) 
+    })
     // 图片大于 500 KB 压缩
-    // if(size>500){ 
+    // if(size>500){
     //   console.log("图片大于500KB")
       // 小程序 API 压缩
       // wx.compressImage({
@@ -65,24 +64,24 @@ Page({
       //     wx.getFileInfo({
       //       filePath: e.tempFilePath,
       //       success: (res)=> {
-      //         console.log((res.size/1024).toFixed(2),'小程序压缩后大小') 
+      //         console.log((res.size/1024).toFixed(2),'小程序压缩后大小')
       //         // if(res.size/1024>500){
       //         //   // 获取API压缩图片宽高
       //         //   wx.getImageInfo({
       //         //     src: e.tempFilePath,
-      //         //     success: (e) => { 
-      //         //       // canvas 压缩  
+      //         //     success: (e) => {
+      //         //       // canvas 压缩
       //         //       // this.compressImg(res.size/1024,e.width,e.height,path)
       //         //     }
-      //         //   }) 
+      //         //   })
       //         // }else {
       //           this.downLoadImg(e.tempFilePath);
       //         // }
       //       }
-      //     })  
+      //     })
       //   }
       // })
-    // }else{ 
+    // }else{
     //   this.downLoadImg(path);
     // }
   },
@@ -92,7 +91,7 @@ Page({
       // 获取压缩后图片宽高
       wx.getImageInfo({
         src: path,
-        success: (resp) => {     
+        success: (resp) => {
           console.log(resp,"获取图片信息2")
             this.setData({
               imgWHB:resp.width+ "px-"+ resp.height + "px"
@@ -103,20 +102,20 @@ Page({
       wx.getFileInfo({
         filePath: path,
         success: (res)=> {
-          // console.log(res,res.size/1024,'压缩后大小') 
+          // console.log(res,res.size/1024,'压缩后大小')
           this.setData({
             imgSizeB:Math.round(res.size/1024)+"KB"+(res.size/1024/1024).toFixed(2)+"M",
             src2: path
-          })  
+          })
           // 下载图片到本地
           wx.saveImageToPhotosAlbum({
             filePath: path,
             success: (res) => {
-              console.log(res,'下载成功') 
+              console.log(res,'下载成功')
             }
-          }) 
+          })
         }
-      }) 
+      })
   },
   // 从相册选择图片
   choosePhoto(){
@@ -138,41 +137,41 @@ Page({
             // 获取原图大小，页面展示
             _this.setData({
               imgSizeF:Math.round(res.size/1024)+"KB_"+(res.size/1024/1024).toFixed(2)+"M"
-            })  
+            })
             // 判断是否压缩
-            _this.ifCompress(Math.round(res.size/1024),imgPath); 
+            _this.ifCompress(Math.round(res.size/1024),imgPath);
           }
-        })   
+        })
       }
     })
   },
   // canvas 压缩图片
-  compressImg(imgPath,imgW,imgH){  
-    console.log(imgW,imgH,"canvas 压缩") 
-    const ctx = wx.createCanvasContext("canvas");  
+  compressImg(imgPath,imgW,imgH){
+    console.log(imgW,imgH,"canvas 压缩")
+    const ctx = wx.createCanvasContext("canvas");
     let w = 350;
-    let h = w*imgH/imgW; 
+    let h = w*imgH/imgW;
     this.setData({
       canvasWidth: w,
       canvasHeight: h
-    }) 
+    })
     console.log(w,h,999)
     ctx.drawImage(imgPath, 0, 0, w, h);
     ctx.draw(false,()=>{
       setTimeout(()=>{
-        this.canvasToImg();  
+        this.canvasToImg();
       },1000)
-    }); 
+    });
   },
   // canvas 压缩后图片转换
-  canvasToImg(w,h){  
+  canvasToImg(w,h){
     let _this = this;
     wx.canvasToTempFilePath({
       canvasId:'canvas',
-      quality:1, 
+      quality:1,
       // destWidth:w*2,
       // destHeight:h*2,
-      success:(res)=>{  
+      success:(res)=>{
         console.log(res,'canvasToImg success')
         // console.log()
         this.downLoadImg(res.tempFilePath)
@@ -201,9 +200,9 @@ Page({
   //       wx.saveImageToPhotosAlbum({
   //         filePath: res.tempImagePath,
   //         success: (res) => {
-  //           console.log(res,'下载成功') 
+  //           console.log(res,'下载成功')
   //         }
-  //       }) 
+  //       })
   //       wx.getImageInfo({
   //         src: res.tempImagePath,
   //         success (res) {;
@@ -212,5 +211,5 @@ Page({
   //       })
   //     }
   //   })
-  // }, 
-}) 
+  // },
+})

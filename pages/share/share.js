@@ -1,4 +1,3 @@
-// pages/share/share.js
 const app = getApp();
 Page({
 
@@ -73,7 +72,7 @@ Page({
   bindinput(e){
     this.setData({
       jobNum: e.detail.value,
-    }) 
+    })
   },
   cancel(){
     this.setData({
@@ -91,14 +90,14 @@ Page({
       withShareTicket:true
     });
     console.log(this,this.data.jobNum,877);
-      
+
     // console.log(app.globalData.userInfo,app.globalData.userInfo.nickName,"用户信息");
     return {
       title: '自定义转发标题',
       path: 'pages/share/share?jobNum=' + this.data.jobNum,
       success: function(res) {
         console.log(res,'分享成功');
-        
+
       },
     }
   }
