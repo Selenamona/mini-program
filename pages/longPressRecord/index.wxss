@@ -1,1 +1,3 @@
-/* pages/longPressRecord/index.wxss */
+.longRress {
+  padding: 400rpx 100rpx;
+}

@@ -1,2 +1,12 @@
-<!--pages/longPressRecord/index.wxml-->
-<text>pages/longPressRecord/index.wxml</text>
+<!-- 长按录音 -->
+<view class="longRress">
+  <button
+    bindtouchend="handleTouchend"
+    bindtouchmove="handleTouchmove"
+    bindtouchstart="handleTouchstart"
+    bindlongpress="handleLongpress"
+  >
+    {{ btnText }}
+  </button>
+  <button bindtap="playRecord" hidden="{{!playURL}}">录制成功，点击播放</button>
+</view>
