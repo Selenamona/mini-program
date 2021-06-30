@@ -12,6 +12,7 @@
       <button data-type="pick" bindtap="bindViewTap">省市选择</button>
       <button data-type="storage" bindtap="bindViewTap">数据存储</button>
       <button data-type="test" bindtap="bindViewTap">测试</button>
+      <button bindtap="netxPage">测试生命周期</button>
     </block>
   </view>
   <view class="usermotto">

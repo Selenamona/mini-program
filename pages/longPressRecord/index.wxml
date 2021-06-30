@@ -9,4 +9,5 @@
     {{ btnText }}
   </button>
   <button bindtap="playRecord" hidden="{{!playURL}}">录制成功，点击播放</button>
+  <button bindtap="netxPage">返回首页</button>
 </view>

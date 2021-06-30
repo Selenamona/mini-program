@@ -1,7 +1,8 @@
 //app.js
-const WXBizDataCrypt = require('./utils/WXBizDataCrypt');
+const WXBizDataCrypt = require('./utils/WXBizDataCrypt')
 App({
-  onLaunch: function (res) {  
+  onLaunch: function (res) {
+    console.log('测试 app onload', res)
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -9,26 +10,29 @@ App({
 
     // 登录
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId 
+      success: (res) => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx2435a1d3c70aaddc&secret=1e87087b3a6e998b46f5c82fb7bcb03f&js_code='+res.code+'&grant_type=authorization_code',
-          success:(e)=>{
+          url:
+            'https://api.weixin.qq.com/sns/jscode2session?appid=wx2435a1d3c70aaddc&secret=1e87087b3a6e998b46f5c82fb7bcb03f&js_code=' +
+            res.code +
+            '&grant_type=authorization_code',
+          success: (e) => {
             // console.log(e,55)
-            this.openId = e.openid;
-            this.sessionKey = e.session_key;
+            this.openId = e.openid
+            this.sessionKey = e.session_key
             // this.unionId = e.unionId;
-          }
+          },
         })
-      }
+      },
     })
     // 获取用户信息
     wx.getSetting({
-      success: res => {
+      success: (res) => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
-            success: res => {
+            success: (res) => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 
@@ -37,16 +41,20 @@ App({
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
-            }
+            },
           })
         }
-      }
-    }) 
+      },
+    })
   },
-  onShow(res){
+  onShow(res) {
+    console.log('测试 app onShow', res)
+    if (res.path === 'pages/longPressRecord/index') {
+      wx.reLaunch({ url: '/pages/index/index' })
+    }
     // 获取转发信息
     // console.log(res,'打开小程序');
-    this.globalData.query = res.query;
+    this.globalData.query = res.query
     // console.log(res.query,'分享传参')
     // wx.getShareInfo({
     //   shareTicket: res.shareTicket,
@@ -59,7 +67,7 @@ App({
     //     var pc = new WXBizDataCrypt(appId, sessionKey)
     //     var data = pc.decryptData(encryptedData , iv)
     //     console.log('解密后 data: ', data)
-    //   }     
+    //   }
     // })
     // // 获取设备信息
     // wx.getSystemInfo({
@@ -70,9 +78,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    openId:'',
-    sessionKey:'',
-    unionId:'',
-    query:'',
-  }
+    openId: '',
+    sessionKey: '',
+    unionId: '',
+    query: '',
+  },
 })

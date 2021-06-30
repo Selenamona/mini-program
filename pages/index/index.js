@@ -6,51 +6,69 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
   //事件处理函数
-  bindViewTap: function(e) {
-    let type = e.target.dataset.type;
-    let url = "";
-    url = '../' + type + '/' + type;
+  bindViewTap: function (e) {
+    let type = e.target.dataset.type
+    let url = ''
+    url = '../' + type + '/' + type
     wx.navigateTo({
-      url: url
+      url: url,
     })
   },
   onLoad: function () {
+    console.log('测试-page1 onload')
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+      app.userInfoReadyCallback = (res) => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true
+          hasUserInfo: true,
         })
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
-        success: res => {
+        success: (res) => {
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
-            hasUserInfo: true
+            hasUserInfo: true,
           })
-        }
+        },
       })
     }
   },
-  getUserInfo: function(e) {
+
+  netxPage() {
+    wx.reLaunch({ url: '../longPressRecord/index' })
+  },
+  onReady() {
+    console.log('测试-page1 onReady')
+  },
+  onShow() {
+    console.log('测试-page1 onShow')
+  },
+  onHide() {
+    console.log('测试-page1 onHide')
+  },
+  onUnload() {
+    console.log('测试-page1 onUnload')
+  },
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      hasUserInfo: true,
     })
-  }
+  },
 })

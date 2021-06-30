@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/longPressRecord/index",
     "pages/fillBlanks/fillBlanks",
-    "pages/index/index",
     "pages/logs/logs",
     "pages/request/request",
     "pages/share/share",
